@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loaded Nachos - Customize Your Order | BiteRight</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="dish-page-perfect.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧀</text></svg>">
+  <!-- <style> 
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+  
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 20px;
+      color: #333;
+    }
+    
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      padding: 0.8rem;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+    
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding-top: 2rem;
+    }
+    
+    .dish-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    
+    .dish-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+    
+    .dish-header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #feca57, #ff9ff3);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+    
+    .dish-meta {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .meta-badge {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .ingredients-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    
+    .ingredient-item {
+      display: flex;
+      align-items: center;
+      padding: 0.8rem;
+      background: rgba(254, 202, 87, 0.05);
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .ingredient-item:hover {
+      background: rgba(254, 202, 87, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    .ingredient-item input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      margin-right: 1rem;
+      accent-color: #feca57;
+      cursor: pointer;
+    }
+    
+    .ingredient-item label {
+      font-weight: 500;
+      color: #2c3e50;
+      cursor: pointer;
+      flex: 1;
+    }
+    
+    .size-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: 1rem;
+      margin: 1rem 0;
+    }
+    
+    .size-option {
+      padding: 1rem;
+      border: 2px solid #ddd;
+      border-radius: 15px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: white;
+    }
+    
+    .size-option.selected {
+      border-color: #feca57;
+      background: rgba(254, 202, 87, 0.1);
+      color: #feca57;
+      font-weight: 600;
+    }
+    
+    .customize-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #feca57, #ff9ff3);
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 25px;
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(254, 202, 87, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 2rem;
+    }
+    
+    .customize-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(254, 202, 87, 0.4);
+      background: linear-gradient(135deg, #ff9ff3, #feca57);
+    }
+    
+    .price-info {
+      text-align: center;
+      margin: 1.5rem 0;
+      padding: 1rem;
+      background: linear-gradient(135deg, rgba(254, 202, 87, 0.1), rgba(255, 159, 243, 0.1));
+      border-radius: 15px;
+    }
+    
+    .price-info .price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #feca57;
+    }
+    
+    .price-info .price-note {
+      font-size: 0.9rem;
+      color: #7f8c8d;
+      margin-top: 0.5rem;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+        padding-top: 4rem;
+      }
+      
+      .dish-header h1 {
+        font-size: 2rem;
+      }
+      
+      .ingredients-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .dish-meta {
+        gap: 0.5rem;
+      }
+      
+      .meta-badge {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+      }
+      
+      .size-options {
+        grid-template-columns: 1fr 1fr;
+      }
+    } -->
+  </style>
+</head>
+<body>
+  <button class="back-btn" onclick="window.history.back()">←</button>
+  
+  <div class="container">
+    <div class="dish-header">
+      <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=600&h=250&fit=crop&crop=center" alt="Loaded Nachos" class="dish-image" loading="lazy" />
+      <h1>🧀 Loaded Nachos</h1>
+      <p>Crispy tortilla chips loaded with melted cheese, jalapeños, and all your favorite toppings</p>
+      <div class="dish-meta">
+        <span class="meta-badge">🇲🇽 Mexican</span>
+        <span class="meta-badge">⏱️ Prep Time: 15 min</span>
+        <span class="meta-badge">👥 Serves: 2-4</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">📏 Size</h2>
+      <div class="size-options">
+        <div class="size-option" data-size="regular">
+          <div>🍽️ Regular</div>
+          <small>Perfect for 1-2</small>
+        </div>
+        <div class="size-option selected" data-size="large">
+          <div>🍽️ Large</div>
+          <small>Great for sharing</small>
+        </div>
+        <div class="size-option" data-size="party">
+          <div>🎉 Party Size</div>
+          <small>Feed the crowd</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">🧀 Cheese & Base</h2>
+      <div class="ingredients-grid">
+        <div class="ingredient-item">
+          <input type="checkbox" id="tortilla-chips" checked>
+          <label for="tortilla-chips">Crispy Tortilla Chips</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="cheddar" checked>
+          <label for="cheddar">Melted Cheddar</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="monterey-jack" checked>
+          <label for="monterey-jack">Monterey Jack</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="queso-blanco">
+          <label for="queso-blanco">Queso Blanco (+₹30)</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="nacho-cheese" checked>
+          <label for="nacho-cheese">Nacho Cheese Sauce</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">🌶️ Toppings</h2>
+      <div class="ingredients-grid">
+        <div class="ingredient-item">
+          <input type="checkbox" id="jalapenos" checked>
+          <label for="jalapenos">Fresh Jalapeños</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="black-beans" checked>
+          <label for="black-beans">Black Beans</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="corn" checked>
+          <label for="corn">Sweet Corn</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="tomatoes" checked>
+          <label for="tomatoes">Diced Tomatoes</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="red-onions" checked>
+          <label for="red-onions">Red Onions</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="cilantro" checked>
+          <label for="cilantro">Fresh Cilantro</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="ground-beef">
+          <label for="ground-beef">Seasoned Ground Beef (+₹50)</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="chicken">
+          <label for="chicken">Grilled Chicken (+₹40)</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">🥑 Sides & Sauces</h2>
+      <div class="ingredients-grid">
+        <div class="ingredient-item">
+          <input type="checkbox" id="sour-cream" checked>
+          <label for="sour-cream">Sour Cream</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="guacamole">
+          <label for="guacamole">Fresh Guacamole (+₹35)</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="salsa" checked>
+          <label for="salsa">Chunky Salsa</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="hot-sauce">
+          <label for="hot-sauce">Hot Sauce</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="lime" checked>
+          <label for="lime">Fresh Lime Wedges</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="price-info">
+      <div class="price">₹180 - ₹250</div>
+      <div class="price-note">Price varies based on size and add-ons</div>
+    </div>
+
+    <a href="Customize.html">
+      <button class="customize-btn">🎯 Proceed to Customization</button>
+    </a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      initializePage();
+      setupEventListeners();
+      animateElements();
+    });
+
+    function initializePage() {
+      updatePrice();
+      document.body.style.opacity = '0';
+      setTimeout(() => {
+        document.body.style.transition = 'opacity 0.5s ease';
+        document.body.style.opacity = '1';
+      }, 100);
+    }
+
+    function setupEventListeners() {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', handleIngredientChange);
+      });
+
+      const ingredientItems = document.querySelectorAll('.ingredient-item');
+      ingredientItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+          if (e.target.type !== 'checkbox') {
+            const checkbox = item.querySelector('input[type="checkbox"]');
+            checkbox.checked = !checkbox.checked;
+            handleIngredientChange.call(checkbox);
+          }
+        });
+      });
+
+      // Size selection
+      const sizeOptions = document.querySelectorAll('.size-option');
+      sizeOptions.forEach(option => {
+        option.addEventListener('click', function() {
+          sizeOptions.forEach(opt => opt.classList.remove('selected'));
+          this.classList.add('selected');
+          updatePrice();
+        });
+      });
+    }
+
+    function handleIngredientChange() {
+      const item = this.closest('.ingredient-item');
+      
+      if (this.checked) {
+        item.style.background = 'rgba(254, 202, 87, 0.15)';
+        item.style.borderLeft = '4px solid #feca57';
+      } else {
+        item.style.background = 'rgba(231, 76, 60, 0.1)';
+        item.style.borderLeft = '4px solid #e74c3c';
+      }
+      
+      updatePrice();
+      
+      item.style.transform = 'scale(1.02)';
+      setTimeout(() => {
+        item.style.transform = 'scale(1)';
+      }, 150);
+    }
+
+    function updatePrice() {
+      let basePrice = 180;
+      
+      // Size adjustments
+      const selectedSize = document.querySelector('.size-option.selected');
+      if (selectedSize) {
+        const size = selectedSize.dataset.size;
+        switch(size) {
+          case 'regular':
+            basePrice = 150;
+            break;
+          case 'large':
+            basePrice = 180;
+            break;
+          case 'party':
+            basePrice = 280;
+            break;
+        }
+      }
+      
+      let totalPrice = basePrice;
+      
+      // Premium add-ons
+      const premiumItems = [
+        { id: 'queso-blanco', price: 30 },
+        { id: 'ground-beef', price: 50 },
+        { id: 'chicken', price: 40 },
+        { id: 'guacamole', price: 35 }
+      ];
+      
+      premiumItems.forEach(item => {
+        const checkbox = document.getElementById(item.id);
+        if (checkbox && checkbox.checked) {
+          totalPrice += item.price;
+        }
+      });
+      
+      const allCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+      const uncheckedCount = Array.from(allCheckboxes).filter(cb => !cb.checked).length;
+      const discount = uncheckedCount * 5;
+      
+      totalPrice = Math.max(totalPrice - discount, 120);
+      
+      const priceElement = document.querySelector('.price');
+      if (priceElement) {
+        priceElement.textContent = `₹${totalPrice}`;
+      }
+    }
+
+    function animateElements() {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        
+        setTimeout(() => {
+          card.style.transition = 'all 0.6s ease';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, index * 200);
+      });
+    }
+  </script>
+</body>
+</html>

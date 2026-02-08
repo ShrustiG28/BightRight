@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masala Dosa - Customize Your Order | BiteRight</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="dish-page-perfect.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🥞</text></svg>">
+</head>
+<body>
+  <button class="back-btn" onclick="window.history.back()">←</button>
+  
+  <div class="container">
+    <div class="dish-header">
+      <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?w=600&h=250&fit=crop&crop=center" alt="Masala Dosa" class="dish-image" loading="lazy" />
+      <h1>🥞 Masala Dosa</h1>
+      <p>Crispy fermented rice crepe filled with spiced potato filling, served with chutneys and sambar</p>
+      <div class="dish-meta">
+        <span class="meta-badge">🇮🇳 South Indian</span>
+        <span class="meta-badge">⏱️ Prep Time: 20 min</span>
+        <span class="meta-badge">👥 Serves: 1</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">📏 Size & Type</h2>
+      <div class="size-options">
+        <div class="size-option" data-size="regular">
+          <div>🥞 Regular</div>
+          <small>Standard size</small>
+        </div>
+        <div class="size-option selected" data-size="paper">
+          <div>📜 Paper Dosa</div>
+          <small>Thin & crispy</small>
+        </div>
+        <div class="size-option" data-size="family">
+          <div>🎉 Family Dosa</div>
+          <small>Extra large</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">🥞 Dosa Batter</h2>
+      <div class="ingredients-grid">
+        <div class="ingredient-item">
+          <input type="checkbox" id="rice" checked>
+          <label for="rice">Rice</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="urad-dal" checked>
+          <label for="urad-dal">Urad Dal</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="fenugreek" checked>
+          <label for="fenugreek">Fenugreek Seeds</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="poha">
+          <label for="poha">Flattened Rice (Poha)</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="ragi">
+          <label for="ragi">Ragi Flour (+₹20)</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">🥔 Potato Masala</h2>
+      <div class="ingredients-grid">
+        <div class="ingredient-item">
+          <input type="checkbox" id="potatoes" checked>
+          <label for="potatoes">Potatoes</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="mustard-seeds" checked>
+          <label for="mustard-seeds">Mustard Seeds</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="curry-leaves" checked>
+          <label for="curry-leaves">Curry Leaves</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="green-chili" checked>
+          <label for="green-chili">Green Chilies</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="turmeric" checked>
+          <label for="turmeric">Turmeric</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="onions" checked>
+          <label for="onions">Onions</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="peas">
+          <label for="peas">Green Peas</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="carrots">
+          <label for="carrots">Carrots</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">🍲 Accompaniments</h2>
+      <div class="ingredients-grid">
+        <div class="ingredient-item">
+          <input type="checkbox" id="coconut-chutney" checked>
+          <label for="coconut-chutney">Coconut Chutney</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="tomato-chutney" checked>
+          <label for="tomato-chutney">Tomato Chutney</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="sambar" checked>
+          <label for="sambar">Sambar</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="mint-chutney">
+          <label for="mint-chutney">Mint Chutney (+₹15)</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="ghee">
+          <label for="ghee">Extra Ghee (+₹25)</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">🌶️ Spice Level</h2>
+      <div class="size-options">
+        <div class="size-option" data-spice="mild">
+          <div>🌶️ Mild</div>
+          <small>Subtle heat</small>
+        </div>
+        <div class="size-option selected" data-spice="medium">
+          <div>🌶️🌶️ Medium</div>
+          <small>Balanced spice</small>
+        </div>
+        <div class="size-option" data-spice="hot">
+          <div>🌶️🌶️🌶️ Hot</div>
+          <small>Fiery kick</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="price-info">
+      <div class="price">₹120 - ₹220</div>
+      <div class="price-note">Price varies based on size and add-ons</div>
+    </div>
+
+    <a href="Customize.html">
+      <button class="customize-btn">🎯 Proceed to Customization</button>
+    </a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      initializePage();
+      setupEventListeners();
+      animateElements();
+    });
+
+    function initializePage() {
+      updatePrice();
+      document.body.style.opacity = '0';
+      setTimeout(() => {
+        document.body.style.transition = 'opacity 0.5s ease';
+        document.body.style.opacity = '1';
+      }, 100);
+    }
+
+    function setupEventListeners() {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', handleIngredientChange);
+      });
+
+      const ingredientItems = document.querySelectorAll('.ingredient-item');
+      ingredientItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+          if (e.target.type !== 'checkbox') {
+            const checkbox = item.querySelector('input[type="checkbox"]');
+            checkbox.checked = !checkbox.checked;
+            handleIngredientChange.call(checkbox);
+          }
+        });
+      });
+
+      // Size selection
+      const sizeOptions = document.querySelectorAll('.size-option');
+      sizeOptions.forEach(option => {
+        option.addEventListener('click', function() {
+          const group = this.closest('.size-options');
+          group.querySelectorAll('.size-option').forEach(opt => opt.classList.remove('selected'));
+          this.classList.add('selected');
+          updatePrice();
+        });
+      });
+    }
+
+    function handleIngredientChange() {
+      const item = this.closest('.ingredient-item');
+      
+      if (this.checked) {
+        item.style.background = 'rgba(254, 202, 87, 0.15)';
+        item.style.borderLeft = '4px solid #feca57';
+      } else {
+        item.style.background = 'rgba(231, 76, 60, 0.1)';
+        item.style.borderLeft = '4px solid #e74c3c';
+      }
+      
+      updatePrice();
+      
+      item.style.transform = 'scale(1.02)';
+      setTimeout(() => {
+        item.style.transform = 'scale(1)';
+      }, 150);
+    }
+
+    function updatePrice() {
+      // Basic price calculation based on size and add-ons
+      let basePrice = 120;
+      const selectedSize = document.querySelector('.card:first-of-type .size-option.selected').getAttribute('data-size');
+      
+      if (selectedSize === 'paper') {
+        basePrice = 150;
+      } else if (selectedSize === 'family') {
+        basePrice = 180;
+      }
+      
+      // Add-ons
+      const addOns = document.querySelectorAll('input[type="checkbox"]:not(:checked)');
+      let discount = 0;
+      
+      // Premium add-ons
+      const premiumAddOns = document.querySelectorAll('input[type="checkbox"]:checked');
+      let premium = 0;
+      premiumAddOns.forEach(addon => {
+        if (addon.id === 'mint-chutney') premium += 15;
+        if (addon.id === 'ghee') premium += 25;
+        if (addon.id === 'ragi') premium += 20;
+      });
+      
+      const finalPrice = basePrice - discount;
+      const maxPrice = basePrice + premium;
+      
+      document.querySelector('.price').textContent = `₹${finalPrice} - ₹${maxPrice}`;
+    }
+
+    function animateElements() {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+          card.style.transition = 'all 0.5s ease';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, 100 + (index * 100));
+      });
+    }
+  </script>
+</body>
+</html>

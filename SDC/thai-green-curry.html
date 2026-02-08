@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thai Green Curry - Customize Your Order | BiteRight</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍛</text></svg>">
+  
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      min-height: 100vh;
+      padding: 20px;
+      color: #333;
+    }
+
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      padding: 0.8rem;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+    
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding-top: 2rem;
+    }
+    
+    .dish-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+    
+    .dish-header h1 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+    
+    .dish-meta {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .meta-badge {
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: 20px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .ingredients-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1rem;
+    }
+    
+    .ingredient-item {
+      display: flex;
+      align-items: center;
+      padding: 0.8rem;
+      background: rgba(102, 126, 234, 0.05);
+      border-radius: 15px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    
+    .ingredient-item:hover {
+      background: rgba(102, 126, 234, 0.1);
+      transform: translateY(-2px);
+    }
+    
+    .ingredient-item input[type="checkbox"] {
+      width: 20px;
+      height: 20px;
+      margin-right: 1rem;
+      accent-color: #667eea;
+      cursor: pointer;
+    }
+    
+    .ingredient-item label {
+      font-weight: 500;
+      color: #2c3e50;
+      cursor: pointer;
+      flex: 1;
+    }
+    
+    .customize-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: 25px;
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 2rem;
+    }
+    
+    .customize-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+      background: linear-gradient(135deg, #f093fb, #f5576c, #4facfe);
+    }
+    
+    .price-info {
+      text-align: center;
+      margin: 1.5rem 0;
+      padding: 1rem;
+      background: linear-gradient(135deg, rgba(39, 174, 96, 0.1), rgba(46, 204, 113, 0.1));
+      border-radius: 15px;
+    }
+    
+    .price-info .price {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #27ae60;
+    }
+    
+    .price-info .price-note {
+      font-size: 0.9rem;
+      color: #7f8c8d;
+      margin-top: 0.5rem;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+        padding-top: 4rem;
+      }
+      
+      .dish-header h1 {
+        font-size: 2rem;
+      }
+      
+      .ingredients-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .dish-meta {
+        gap: 0.5rem;
+      }
+      
+      .meta-badge {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="back-btn" onclick="window.history.back()">←</button>
+  
+  <div class="container">
+    <div class="dish-header">
+      <h1>🍛 Thai Green Curry</h1>
+      <p>Authentic Thai curry with coconut milk and fresh herbs</p>
+      <div class="dish-meta">
+        <span class="meta-badge">🌶️ Spice Level: Medium</span>
+        <span class="meta-badge">⏱️ Prep Time: 30 min</span>
+        <span class="meta-badge">👥 Serves: 2-3</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">🥥 Main Ingredients</h2>
+      <div class="ingredients-grid">
+        <div class="ingredient-item">
+          <input type="checkbox" id="coconut-milk" checked>
+          <label for="coconut-milk">Rich Coconut Milk</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="green-curry-paste" checked>
+          <label for="green-curry-paste">Green Curry Paste</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="chicken-tofu" checked>
+          <label for="chicken-tofu">Chicken/Tofu/Vegetables</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="thai-eggplant" checked>
+          <label for="thai-eggplant">Thai Eggplant</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="bamboo-shoots" checked>
+          <label for="bamboo-shoots">Bamboo Shoots</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="bell-peppers" checked>
+          <label for="bell-peppers">Colorful Bell Peppers</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="thai-basil" checked>
+          <label for="thai-basil">Fresh Thai Basil</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="kaffir-lime" checked>
+          <label for="kaffir-lime">Kaffir Lime Leaves</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="galangal" checked>
+          <label for="galangal">Fresh Galangal</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="lemongrass" checked>
+          <label for="lemongrass">Lemongrass Stalks</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">🌿 Aromatics & Seasonings</h2>
+      <div class="ingredients-grid">
+        <div class="ingredient-item">
+          <input type="checkbox" id="fish-sauce" checked>
+          <label for="fish-sauce">Fish Sauce (or Soy Sauce)</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="palm-sugar" checked>
+          <label for="palm-sugar">Palm Sugar</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="thai-chilies" checked>
+          <label for="thai-chilies">Fresh Thai Chilies</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="garlic" checked>
+          <label for="garlic">Fresh Garlic</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="shallots" checked>
+          <label for="shallots">Thai Shallots</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="lime-juice" checked>
+          <label for="lime-juice">Fresh Lime Juice</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="price-info">
+      <div class="price">₹240 - ₹320</div>
+      <div class="price-note">Price varies based on protein choice and add-ons</div>
+    </div>
+
+    <a href="Customize.html">
+      <button class="customize-btn">🎯 Proceed to Customization</button>
+    </a>
+  </div>
+
+  <script>
+    // Enhanced JavaScript for Thai Green Curry Page
+    
+    document.addEventListener('DOMContentLoaded', function() {
+      initializePage();
+      setupEventListeners();
+      animateElements();
+    });
+
+    function initializePage() {
+      updatePrice();
+      document.body.style.opacity = '0';
+      setTimeout(() => {
+        document.body.style.transition = 'opacity 0.5s ease';
+        document.body.style.opacity = '1';
+      }, 100);
+    }
+
+    function setupEventListeners() {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', handleIngredientChange);
+      });
+
+      const ingredientItems = document.querySelectorAll('.ingredient-item');
+      ingredientItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+          if (e.target.type !== 'checkbox') {
+            const checkbox = item.querySelector('input[type="checkbox"]');
+            checkbox.checked = !checkbox.checked;
+            handleIngredientChange.call(checkbox);
+          }
+        });
+      });
+    }
+
+    function handleIngredientChange() {
+      const item = this.closest('.ingredient-item');
+      
+      if (this.checked) {
+        item.style.background = 'rgba(102, 126, 234, 0.15)';
+        item.style.borderLeft = '4px solid #667eea';
+      } else {
+        item.style.background = 'rgba(231, 76, 60, 0.1)';
+        item.style.borderLeft = '4px solid #e74c3c';
+      }
+      
+      updatePrice();
+      
+      item.style.transform = 'scale(1.02)';
+      setTimeout(() => {
+        item.style.transform = 'scale(1)';
+      }, 150);
+    }
+
+    function updatePrice() {
+      const basePrice = 240;
+      let totalPrice = basePrice;
+      
+      const allCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+      const uncheckedCount = Array.from(allCheckboxes).filter(cb => !cb.checked).length;
+      const discount = uncheckedCount * 8;
+      
+      totalPrice = Math.max(totalPrice - discount, 180);
+      
+      const priceElement = document.querySelector('.price');
+      if (priceElement) {
+        priceElement.textContent = `₹${totalPrice}`;
+      }
+    }
+
+    function animateElements() {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        
+        setTimeout(() => {
+          card.style.transition = 'all 0.6s ease';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, index * 200);
+      });
+    }
+
+    document.querySelector('.customize-btn').addEventListener('click', function(e) {
+      e.preventDefault();
+      
+      const selectedIngredients = [];
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+      checkboxes.forEach(checkbox => {
+        const label = checkbox.nextElementSibling.textContent;
+        selectedIngredients.push(label);
+      });
+      
+      const customization = {
+        dish: 'Thai Green Curry',
+        ingredients: selectedIngredients,
+        price: document.querySelector('.price').textContent,
+        timestamp: new Date().toISOString()
+      };
+      
+      localStorage.setItem('currentCustomization', JSON.stringify(customization));
+      
+      setTimeout(() => {
+        window.location.href = 'Customize.html';
+      }, 1500);
+    });
+  </script>
+</body>
+</html>

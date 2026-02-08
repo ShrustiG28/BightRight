@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mushroom Risotto - Customize Your Order | BiteRight</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="dish-page-perfect.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍄</text></svg>">
+</head>
+<body>
+  <button class="back-btn" onclick="window.history.back()">←</button>
+  
+  <div class="container">
+    <div class="dish-header">
+      <img src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=600&h=250&fit=crop&crop=center" alt="Mushroom Risotto" class="dish-image" loading="lazy" />
+      <h1>🍄 Mushroom Risotto</h1>
+      <p>Creamy Italian rice dish cooked with mushrooms, white wine, and Parmesan cheese</p>
+      <div class="dish-meta">
+        <span class="meta-badge">🇮🇹 Italian</span>
+        <span class="meta-badge">⏱️ Prep Time: 25 min</span>
+        <span class="meta-badge">👥 Serves: 1-2</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">📏 Portion Size</h2>
+      <div class="size-options">
+        <div class="size-option" data-size="appetizer">
+          <div>🍽️ Appetizer</div>
+          <small>Light starter</small>
+        </div>
+        <div class="size-option selected" data-size="regular">
+          <div>🍽️ Regular</div>
+          <small>Main course</small>
+        </div>
+        <div class="size-option" data-size="family">
+          <div>🎉 Family Size</div>
+          <small>Serves 3-4</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">🍚 Rice & Base</h2>
+      <div class="ingredients-grid">
+        <div class="ingredient-item">
+          <input type="checkbox" id="arborio" checked>
+          <label for="arborio">Arborio Rice</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="carnaroli">
+          <label for="carnaroli">Carnaroli Rice (Premium) (+₹40)</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="veg-broth" checked>
+          <label for="veg-broth">Vegetable Broth</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="white-wine" checked>
+          <label for="white-wine">White Wine</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="onions" checked>
+          <label for="onions">Onions</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="garlic" checked>
+          <label for="garlic">Garlic</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">🍄 Mushrooms</h2>
+      <div class="ingredients-grid">
+        <div class="ingredient-item">
+          <input type="checkbox" id="button-mushrooms" checked>
+          <label for="button-mushrooms">Button Mushrooms</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="cremini" checked>
+          <label for="cremini">Cremini Mushrooms</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="shiitake">
+          <label for="shiitake">Shiitake Mushrooms (+₹35)</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="porcini">
+          <label for="porcini">Dried Porcini (+₹50)</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="oyster">
+          <label for="oyster">Oyster Mushrooms (+₹30)</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">🧀 Cheese & Finishing</h2>
+      <div class="ingredients-grid">
+        <div class="ingredient-item">
+          <input type="checkbox" id="parmesan" checked>
+          <label for="parmesan">Parmesan Cheese</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="mascarpone">
+          <label for="mascarpone">Mascarpone (+₹30)</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="butter" checked>
+          <label for="butter">Butter</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="olive-oil" checked>
+          <label for="olive-oil">Extra Virgin Olive Oil</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="truffle-oil">
+          <label for="truffle-oil">Truffle Oil (+₹60)</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">🌿 Herbs & Extras</h2>
+      <div class="ingredients-grid">
+        <div class="ingredient-item">
+          <input type="checkbox" id="thyme" checked>
+          <label for="thyme">Fresh Thyme</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="parsley" checked>
+          <label for="parsley">Parsley</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="black-pepper" checked>
+          <label for="black-pepper">Freshly Ground Black Pepper</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="peas">
+          <label for="peas">Green Peas</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="asparagus">
+          <label for="asparagus">Asparagus Tips (+₹25)</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="price-info">
+      <div class="price">₹220 - ₹380</div>
+      <div class="price-note">Price varies based on size and premium ingredients</div>
+    </div>
+
+    <a href="Customize.html">
+      <button class="customize-btn">🎯 Proceed to Customization</button>
+    </a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      initializePage();
+      setupEventListeners();
+      animateElements();
+    });
+
+    function initializePage() {
+      updatePrice();
+      document.body.style.opacity = '0';
+      setTimeout(() => {
+        document.body.style.transition = 'opacity 0.5s ease';
+        document.body.style.opacity = '1';
+      }, 100);
+    }
+
+    function setupEventListeners() {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', handleIngredientChange);
+      });
+
+      const ingredientItems = document.querySelectorAll('.ingredient-item');
+      ingredientItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+          if (e.target.type !== 'checkbox') {
+            const checkbox = item.querySelector('input[type="checkbox"]');
+            checkbox.checked = !checkbox.checked;
+            handleIngredientChange.call(checkbox);
+          }
+        });
+      });
+
+      // Size selection
+      const sizeOptions = document.querySelectorAll('.size-option');
+      sizeOptions.forEach(option => {
+        option.addEventListener('click', function() {
+          sizeOptions.forEach(opt => opt.classList.remove('selected'));
+          this.classList.add('selected');
+          updatePrice();
+        });
+      });
+    }
+
+    function handleIngredientChange() {
+      const item = this.closest('.ingredient-item');
+      
+      if (this.checked) {
+        item.style.background = 'rgba(254, 202, 87, 0.15)';
+        item.style.borderLeft = '4px solid #feca57';
+      } else {
+        item.style.background = 'rgba(231, 76, 60, 0.1)';
+        item.style.borderLeft = '4px solid #e74c3c';
+      }
+      
+      updatePrice();
+      
+      item.style.transform = 'scale(1.02)';
+      setTimeout(() => {
+        item.style.transform = 'scale(1)';
+      }, 150);
+    }
+
+    function updatePrice() {
+      // Basic price calculation based on size and add-ons
+      let basePrice = 220;
+      const selectedSize = document.querySelector('.size-option.selected').getAttribute('data-size');
+      
+      if (selectedSize === 'appetizer') {
+        basePrice = 180;
+      } else if (selectedSize === 'family') {
+        basePrice = 320;
+      }
+      
+      // Premium add-ons
+      const premiumAddOns = document.querySelectorAll('input[type="checkbox"]:checked');
+      let premium = 0;
+      premiumAddOns.forEach(addon => {
+        if (addon.id === 'carnaroli') premium += 40;
+        if (addon.id === 'shiitake') premium += 35;
+        if (addon.id === 'porcini') premium += 50;
+        if (addon.id === 'oyster') premium += 30;
+        if (addon.id === 'mascarpone') premium += 30;
+        if (addon.id === 'truffle-oil') premium += 60;
+        if (addon.id === 'asparagus') premium += 25;
+      });
+      
+      const finalPrice = basePrice;
+      const maxPrice = basePrice + premium;
+      
+      document.querySelector('.price').textContent = `₹${finalPrice} - ₹${maxPrice}`;
+    }
+
+    function animateElements() {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+          card.style.transition = 'all 0.5s ease';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, 100 + (index * 100));
+      });
+    }
+  </script>
+</body>
+</html>

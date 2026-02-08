@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingredient Checklists | BiteRight</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="perfect-alignment.css" />
+  <link rel="stylesheet" href="design-system.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍽️</text></svg>">
+  <style>
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      min-height: 100vh;
+      padding-bottom: 70px; /* Space for bottom nav */
+    }
+    
+    .ingredient-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      padding: 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    
+    .ingredient-card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      padding: 1.5rem;
+      width: 300px;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all var(--transition-base);
+    }
+    
+    .ingredient-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .ingredient-card h1 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .ingredient-card h2 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: #667eea;
+      margin: 1rem 0 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .ingredient-card h2::before {
+      content: '🍳';
+    }
+    
+    .ingredient-card h2:nth-of-type(2)::before {
+      content: '🌶️';
+    }
+    
+    .ingredient-card label {
+      display: block;
+      margin: 0.5rem 0;
+      padding: 0.5rem;
+      border-radius: var(--radius-md);
+      transition: all var(--transition-base);
+      cursor: pointer;
+    }
+    
+    .ingredient-card label:hover {
+      background: rgba(102, 126, 234, 0.1);
+    }
+    
+    .ingredient-card input[type="checkbox"] {
+      margin-right: 0.5rem;
+      accent-color: #667eea;
+    }
+    
+    .place-order-btn {
+      display: inline-block;
+      width: 100%;
+      margin-top: 1.5rem;
+      padding: 0.8rem 1.5rem;
+      background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+      color: white;
+      border: none;
+      border-radius: var(--radius-lg);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition-base);
+      text-align: center;
+      text-decoration: none;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+    
+    .place-order-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+    }
+    
+    .page-header {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(10px);
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-md);
+    }
+    
+    .page-header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+    
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      padding: 0.8rem;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+    
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    @media (max-width: 768px) {
+      .ingredient-container {
+        padding: 1rem;
+      }
+      
+      .ingredient-card {
+        width: 100%;
+      }
+      
+      .page-header h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="back-btn" onclick="window.history.back()">←</button>
+  
+  <div class="page-header">
+    <h1>🍽️ Customize Your Ingredients</h1>
+    <p>Select the ingredients you want in your dish</p>
+  </div>
+  
+  <div class="ingredient-container">
+    <div class="ingredient-card">
+      <h1>Spicy Biryani</h1>
+      <h2>Main Ingredients</h2>
+      <label><input type="checkbox"> Basmati rice</label>
+      <label><input type="checkbox"> Chicken/Mutton/Vegetables</label>
+      <label><input type="checkbox"> Onions</label>
+      <label><input type="checkbox"> Tomatoes</label>
+      <label><input type="checkbox"> Yogurt</label>
+      <label><input type="checkbox"> Ginger-garlic paste</label>
+      <label><input type="checkbox"> Green chilies</label>
+      <label><input type="checkbox"> Coriander & Mint</label>
+      <label><input type="checkbox"> Ghee/Oil</label>
+      <label><input type="checkbox"> Lemon juice</label>
+      <h2>Spices</h2>
+      <label><input type="checkbox"> Red chili</label>
+      <label><input type="checkbox"> Turmeric</label>
+      <label><input type="checkbox"> Biryani masala</label>
+      <label><input type="checkbox"> Whole spices</label>
+      <a href="place-order.html?dish=Spicy%20Biryani&price=180" class="place-order-btn">🎯 Place Order</a>
+    </div>
+
+    <div class="ingredient-card">
+      <h1>Paneer Butter Masala</h1>
+      <h2>Main Ingredients</h2>
+      <label><input type="checkbox"> Paneer</label>
+      <label><input type="checkbox"> Tomato puree</label>
+      <label><input type="checkbox"> Onion</label>
+      <label><input type="checkbox"> Butter</label>
+      <label><input type="checkbox"> Fresh cream</label>
+      <label><input type="checkbox"> Ginger-garlic paste</label>
+      <label><input type="checkbox"> Cashew paste</label>
+      <h2>Spices</h2>
+      <label><input type="checkbox"> Red chili</label>
+      <label><input type="checkbox"> Turmeric</label>
+      <label><input type="checkbox"> Garam masala</label>
+      <label><input type="checkbox"> Kasuri methi</label>
+      <a href="place-order.html?dish=Paneer%20Butter%20Masala&price=160" class="place-order-btn">🎯 Place Order</a>
+    </div>
+
+    <div class="ingredient-card">
+      <h1>Tandoori Chicken</h1>
+      <h2>Ingredients</h2>
+      <label><input type="checkbox"> Chicken legs – 4 pieces</label>
+      <label><input type="checkbox"> Thick yogurt – 1 cup</label>
+      <label><input type="checkbox"> Lemon juice – 2 tbsp</label>
+      <label><input type="checkbox"> Ginger-garlic paste – 2 tbsp</label>
+      <label><input type="checkbox"> Salt – as per taste</label>
+      <label><input type="checkbox"> Mustard oil – 2 tbsp</label>
+      <label><input type="checkbox"> Onion rings – for garnish</label>
+      <label><input type="checkbox"> Lemon wedges – for garnish</label>
+      <label><input type="checkbox"> Yogurt + mint dip</label>
+      <label><input type="checkbox"> Charcoal piece for smoke</label>
+      <label><input type="checkbox"> Fenugreek leaves</label>
+      <a href="place-order.html?dish=Tandoori%20Chicken&price=200" class="place-order-btn">🎯 Place Order</a>
+    </div>
+
+    <div class="ingredient-card">
+      <h1>Veggie Wrap</h1>
+      <h2>Ingredients</h2>
+      <label><input type="checkbox"> Tortilla</label>
+      <label><input type="checkbox"> Grilled veggies</label>
+      <label><input type="checkbox"> Lettuce</label>
+      <label><input type="checkbox"> Cheese</label>
+      <label><input type="checkbox"> Hummus or mayo</label>
+      <label><input type="checkbox"> Avocado slices</label>
+      <label><input type="checkbox"> Jalapeños (optional)</label>
+      <label><input type="checkbox"> Paneer cubes or tofu</label>
+      <label><input type="checkbox"> Mayonnaise or aioli</label>
+      <label><input type="checkbox"> Sweet corn</label>
+      <a href="place-order.html?dish=Veggie%20Wrap&price=120" class="place-order-btn">🎯 Place Order</a>
+    </div>
+
+    <div class="ingredient-card">
+      <h1>Classic Dosa</h1>
+      <h2>Ingredients</h2>
+      <label><input type="checkbox"> Dosa batter</label>
+      <label><input type="checkbox"> Oil or ghee</label>
+      <label><input type="checkbox"> Potato masala</label>
+      <label><input type="checkbox"> Mustard seeds</label>
+      <label><input type="checkbox"> Curry leaves</label>
+      <a href="place-order.html?dish=Classic%20Dosa&price=80" class="place-order-btn">🎯 Place Order</a>
+    </div>
+
+    <div class="ingredient-card">
+      <h1>Hakka Noodles</h1>
+      <h2>Ingredients</h2>
+      <label><input type="checkbox"> Noodles</label>
+      <label><input type="checkbox"> Cabbage</label>
+      <label><input type="checkbox"> Capsicum</label>
+      <label><input type="checkbox"> Soy sauce</label>
+      <label><input type="checkbox"> Vinegar</label>
+      <label><input type="checkbox"> Garlic</label>
+      <label><input type="checkbox"> Pepper</label>
+      <a href="place-order.html?dish=Hakka%20Noodles&price=150" class="place-order-btn">🎯 Place Order</a>
+    </div>
+
+    <div class="ingredient-card">
+      <h1>Butter Naan</h1>
+      <h2>Ingredients</h2>
+      <label><input type="checkbox"> All-purpose flour</label>
+      <label><input type="checkbox"> Yogurt</label>
+      <label><input type="checkbox"> Baking soda</label>
+      <label><input type="checkbox"> Butter</label>
+      <label><input type="checkbox"> Salt</label>
+      <label><input type="checkbox"> Water</label>
+      <a href="place-order.html?dish=Butter%20Naan&price=40" class="place-order-btn">🎯 Place Order</a>
+    </div>
+
+    <div class="ingredient-card">
+      <h1>Chole Bhature</h1>
+      <h2>Ingredients</h2>
+      <label><input type="checkbox"> Chickpeas</label>
+      <label><input type="checkbox"> Onion & tomato</label>
+      <label><input type="checkbox"> Chole masala</label>
+      <label><input type="checkbox"> Bhature dough</label>
+      <label><input type="checkbox"> Oil</label>
+      <label><input type="checkbox"> Spices</label>
+      <a href="place-order.html?dish=Chole%20Bhature&price=100" class="place-order-btn">🎯 Place Order</a>
+    </div>
+
+    <div class="ingredient-card">
+      <h1>Mushroom Risotto</h1>
+      <h2>Ingredients</h2>
+      <label><input type="checkbox"> Arborio rice</label>
+      <label><input type="checkbox"> Mushrooms</label>
+      <label><input type="checkbox"> Onion</label>
+      <label><input type="checkbox"> Garlic</label>
+      <label><input type="checkbox"> Vegetable broth</label>
+      <label><input type="checkbox"> Parmesan</label>
+      <label><input type="checkbox"> Butter</label>
+      <a href="place-order.html?dish=Mushroom%20Risotto&price=220" class="place-order-btn">🎯 Place Order</a>
+    </div>
+  </div>
+
+  <!-- Footer Navigation -->
+  <nav class="bottom-nav">
+    <div class="nav-container">
+      <a href="index.html">
+        <button class="nav-btn" data-page="home">
+          <span class="nav-icon">🏠</span>
+          <span class="nav-label">Home</span>
+        </button>
+      </a>
+      <a href="my-orders.html" class="nav-link">
+        <button class="nav-btn" data-page="orders">
+          <span class="nav-icon">🍴</span>
+          <span class="nav-label">Orders</span>
+        </button>
+      </a>
+      <button class="nav-btn active" data-page="ingredients">
+        <span class="nav-icon">🍳</span>
+        <span class="nav-label">Ingredients</span>
+      </button>
+      <button class="nav-btn" data-page="offers">
+        <span class="nav-icon">💸</span>
+        <span class="nav-label">Offers</span>
+      </button>
+      <button class="nav-btn" data-page="profile">
+        <span class="nav-icon">👤</span>
+        <span class="nav-label">Profile</span>
+      </button>
+    </div>
+  </nav>
+</body>
+</html>

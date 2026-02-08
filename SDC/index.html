@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BiteRight | Custom Food Experience</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="perfect-alignment.css" />
+  <link rel="stylesheet" href="design-system.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍽️</text></svg>">
+</head>
+<body>
+  
+
+  
+  <header>
+    <div class="container">
+      <h1>BiteRight – Eat what you want, avoid what you don't! 🍽️</h1>
+      <div class="search-container">
+        <input type="text" placeholder="Search dishes, restaurants..." id="searchBar" />
+        <div class="search-icon">🔍</div>
+      </div>
+    </div>
+  </header>
+
+ 
+  <section class="mood-filters">
+    <div class="container">
+      <button class="mood-btn" data-mood="comfort">😌 Comfort</button>
+      <button class="mood-btn" data-mood="healthy">🥗 Healthy</button>
+      <button class="mood-btn" data-mood="cheat">🍕 Cheat Meal</button>
+      <button class="mood-btn" data-mood="late-night">🌙 Late Night</button>
+    </div>
+  </section>
+
+ 
+  <section class="restaurant-list-section">
+    <div class="container">
+      <div class="restaurant-list" id="restaurantList">
+
+   
+    <div class="restaurant-card" data-category="comfort spicy">
+      <div class="card-image-container">
+        <img src="https://images.unsplash.com/photo-1589302168068-964664d93dc0?w=400&h=300&fit=crop&crop=center" alt="Spicy Biryani" loading="lazy" />
+        <div class="rating-badge">⭐ 4.8</div>
+        <div class="time-badge">⏱️ 25-30 min</div>
+      </div>
+      <div class="info">
+        <h2>Spicy Biryani</h2>
+        <p>🌶️ Keto | 💪 High Protein | ⚙️ Customizable</p>
+        <div class="price-tag">₹180 - ₹250</div>
+        <a href="spicy-biryani.html">
+          <button class="customize-btn">🎯 CUSTOMIZE NOW</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="restaurant-card" data-category="comfort vegetarian">
+      <div class="card-image-container">
+        <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=400&h=300&fit=crop&crop=center" alt="Paneer Butter Masala" loading="lazy" />
+        <div class="rating-badge">⭐ 4.6</div>
+        <div class="time-badge">⏱️ 20-25 min</div>
+      </div>
+      <div class="info">
+        <h2>Paneer Butter Masala</h2>
+        <p>🥬 Vegetarian | 💪 High Protein | 🥜 Cashew-Based</p>
+        <div class="price-tag">₹160 - ₹220</div>
+        <a href="paneer-butter-masala.html">
+          <button class="customize-btn">🎯 CUSTOMIZE NOW</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="restaurant-card" data-category="healthy protein">
+      <div class="card-image-container">
+        <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?w=400&h=300&fit=crop&crop=center" alt="Tandoori Chicken" loading="lazy" />
+        <div class="rating-badge">⭐ 4.9</div>
+        <div class="time-badge">⏱️ 30-35 min</div>
+      </div>
+      <div class="info">
+        <h2>Tandoori Chicken</h2>
+        <p>🔥 Grilled | 🌾 Gluten-Free | 💪 High Protein</p>
+        <div class="price-tag">₹200 - ₹280</div>
+        <a href="tandoori-chicken.html">
+          <button class="customize-btn">🎯 CUSTOMIZE NOW</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="restaurant-card" data-category="healthy light">
+      <div class="card-image-container">
+        <img src="https://images.unsplash.com/photo-1600850056064-a8b380df8395?w=400&h=300&fit=crop&crop=center" alt="Veggie Wrap" loading="lazy" />
+        <div class="rating-badge">⭐ 4.4</div>
+        <div class="time-badge">⏱️ 15-20 min</div>
+      </div>
+      <div class="info">
+        <h2>Veggie Wrap</h2>
+        <p>🥗 Healthy | 🥛 Dairy-Free | 🌯 Custom Wrap</p>
+        <div class="price-tag">₹120 - ₹180</div>
+        <a href="veg.html">
+          <button class="customize-btn">🎯 CUSTOMIZE NOW</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="restaurant-card" data-category="comfort traditional">
+      <div class="card-image-container">
+        <img src="https://images.unsplash.com/photo-1630383249896-424e482df921?w=400&h=300&fit=crop&crop=center" alt="Masala Dosa" loading="lazy" />
+        <div class="rating-badge">⭐ 4.7</div>
+        <div class="time-badge">⏱️ 20-25 min</div>
+      </div>
+      <div class="info">
+        <h2>Masala Dosa</h2>
+        <p>🇮🇳 South Indian | 🌱 Vegan Option | 🥞 Crispy</p>
+        <div class="price-tag">₹80 - ₹140</div>
+        <a href="Classic-dosa.html">
+          <button class="customize-btn">🎯 CUSTOMIZE NOW</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="restaurant-card" data-category="comfort creamy">
+      <div class="card-image-container">
+        <img src="https://images.unsplash.com/photo-1476124369491-e7addf5db371?w=400&h=300&fit=crop&crop=center" alt="Mushroom Risotto" loading="lazy" />
+        <div class="rating-badge">⭐ 4.5</div>
+        <div class="time-badge">⏱️ 25-30 min</div>
+      </div>
+      <div class="info">
+        <h2>Mushroom Risotto</h2>
+        <p>🇮🇹 Italian | 🧈 Creamy | 🥜 Nut-Free</p>
+        <div class="price-tag">₹220 - ₹300</div>
+        <a href="mushroom-risotto.html">
+          <button class="customize-btn">🎯 CUSTOMIZE NOW</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="restaurant-card" data-category="cheat heavy">
+      <div class="card-image-container">
+        <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?w=400&h=300&fit=crop&crop=center" alt="Chole Bhature" loading="lazy" />
+        <div class="rating-badge">⭐ 4.8</div>
+        <div class="time-badge">⏱️ 25-30 min</div>
+      </div>
+      <div class="info">
+        <h2>Chole Bhature</h2>
+        <p>🇮🇳 North Indian | 🍞 Heavy | 🌶️ Custom Spice</p>
+        <div class="price-tag">₹100 - ₹160</div>
+        <a href="chole-bhature.html">
+          <button class="customize-btn">🎯 CUSTOMIZE NOW</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="restaurant-card" data-category="healthy light">
+      <div class="card-image-container">
+        <img src="https://images.unsplash.com/photo-1455619452474-d2be8b1e70cd?w=400&h=300&fit=crop&crop=center" alt="Thai Green Curry" loading="lazy" />
+        <div class="rating-badge">⭐ 4.7</div>
+        <div class="time-badge">⏱️ 30-35 min</div>
+      </div>
+      <div class="info">
+        <h2>Thai Green Curry</h2>
+        <p>🇹🇭 Thai | 🥥 Coconut | 🌿 Fresh Herbs</p>
+        <div class="price-tag">₹240 - ₹320</div>
+        <a href="thai-green-curry.html">
+          <button class="customize-btn">🎯 CUSTOMIZE NOW</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="restaurant-card" data-category="healthy protein">
+      <div class="card-image-container">
+        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop&crop=center" alt="Grilled Chicken Salad" loading="lazy" />
+        <div class="rating-badge">⭐ 4.5</div>
+        <div class="time-badge">⏱️ 15-20 min</div>
+      </div>
+      <div class="info">
+        <h2>Grilled Chicken Salad</h2>
+        <p>🥗 Fresh | 💪 High Protein | 🌿 Low Carb</p>
+        <div class="price-tag">₹180 - ₹240</div>
+        <a href="chicken-salad.html">
+          <button class="customize-btn">🎯 CUSTOMIZE NOW</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="restaurant-card" data-category="cheat comfort">
+      <div class="card-image-container">
+        <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?w=400&h=300&fit=crop&crop=center" alt="Cheese Loaded Pizza" loading="lazy" />
+        <div class="rating-badge">⭐ 4.9</div>
+        <div class="time-badge">⏱️ 20-25 min</div>
+      </div>
+      <div class="info">
+        <h2>Cheese Loaded Pizza</h2>
+        <p>🍕 Italian | 🧀 Extra Cheese | 🌶️ Custom Toppings</p>
+        <div class="price-tag">₹280 - ₹450</div>
+        <a href="cheese-pizza.html">
+          <button class="customize-btn">🎯 CUSTOMIZE NOW</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="restaurant-card" data-category="comfort traditional">
+      <div class="card-image-container">
+        <img src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?w=400&h=300&fit=crop" alt="Butter Chicken" loading="lazy" />
+        <div class="rating-badge">⭐ 4.8</div>
+        <div class="time-badge">⏱️ 35-40 min</div>
+      </div>
+      <div class="info">
+        <h2>Butter Chicken</h2>
+        <p>🇮🇳 Mughlai | 🧈 Creamy | 🍅 Tomato Base</p>
+        <div class="price-tag">₹220 - ₹280</div>
+        <a href="butter-chicken.html">
+          <button class="customize-btn">🎯 CUSTOMIZE NOW</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="restaurant-card" data-category="healthy light">
+      <div class="card-image-container">
+        <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?w=400&h=300&fit=crop&crop=center" alt="Mediterranean Bowl" loading="lazy" />
+        <div class="rating-badge">⭐ 4.6</div>
+        <div class="time-badge">⏱️ 15-20 min</div>
+      </div>
+      <div class="info">
+        <h2>Mediterranean Bowl</h2>
+        <p>🇬🇷 Mediterranean | 🫒 Olive Oil | 🥒 Fresh Veggies</p>
+        <div class="price-tag">₹200 - ₹260</div>
+        <a href="mediterranean-bowl.html">
+          <button class="customize-btn">🎯 CUSTOMIZE NOW</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="restaurant-card" data-category="comfort spicy">
+      <div class="card-image-container">
+        <img src="https://images.unsplash.com/photo-1585937421612-70a008356fbe?w=400&h=300&fit=crop&crop=center" alt="Spicy Ramen Bowl" loading="lazy" />
+        <div class="rating-badge">⭐ 4.7</div>
+        <div class="time-badge">⏱️ 25-30 min</div>
+      </div>
+      <div class="info">
+        <h2>Spicy Ramen Bowl</h2>
+        <p>🇯🇵 Japanese | 🍜 Rich Broth | 🌶️ Customizable Heat</p>
+        <div class="price-tag">₹250 - ₹350</div>
+        <a href="ramen-bowl.html">
+          <button class="customize-btn">🎯 CUSTOMIZE NOW</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="restaurant-card" data-category="healthy protein">
+      <div class="card-image-container">
+        <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=400&h=300&fit=crop&crop=center" alt="Quinoa Power Bowl" loading="lazy" />
+        <div class="rating-badge">⭐ 4.4</div>
+        <div class="time-badge">⏱️ 20-25 min</div>
+      </div>
+      <div class="info">
+        <h2>Quinoa Power Bowl</h2>
+        <p>🌾 Superfood | 💪 High Protein | 🥑 Avocado</p>
+        <div class="price-tag">₹220 - ₹280</div>
+        <a href="quinoa-bowl.html">
+          <button class="customize-btn">🎯 CUSTOMIZE NOW</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="restaurant-card" data-category="cheat late-night">
+      <div class="card-image-container">
+        <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?w=400&h=300&fit=crop&crop=center" alt="Loaded Nachos" loading="lazy" />
+        <div class="rating-badge">⭐ 4.6</div>
+        <div class="time-badge">⏱️ 15-20 min</div>
+      </div>
+      <div class="info">
+        <h2>Loaded Nachos</h2>
+        <p>🇲🇽 Mexican | 🧀 Cheese Loaded | 🌶️ Jalapeños</p>
+        <div class="price-tag">₹180 - ₹250</div>
+        <a href="loaded-nachos.html">
+          <button class="customize-btn">🎯 CUSTOMIZE NOW</button>
+        </a>
+      </div>
+    </div>
+
+    <div class="restaurant-card" data-category="comfort traditional">
+      <div class="card-image-container">
+        <img src="Perfectly-balanced-fish-curry.jpg" alt="Coastal Fish Curry" loading="lazy" />
+        <div class="rating-badge">⭐ 4.8</div>
+        <div class="time-badge">⏱️ 30-35 min</div>
+      </div>
+      <div class="info">
+        <h2>Coastal Fish Curry</h2>
+        <p>🐟 Fresh Fish | 🥥 Coconut | 🌶️ Coastal Spices</p>
+        <div class="price-tag">₹260 - ₹340</div>
+        <a href="fish-curry.html">
+          <button class="customize-btn">🎯 CUSTOMIZE NOW</button>
+        </a>
+      </div>
+    </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section class="cart-section">
+    <div class="container container-sm">
+      <div class="cart" id="cartSection">
+        <div class="cart-header">
+          <h2>🛒 Your Cart</h2>
+          <span class="cart-count" id="cartCount">3 items</span>
+        </div>
+        <div class="cart-items" id="cartItems">
+          <div class="cart-item">
+            <span class="item-name">Tandoori Chicken</span>
+            <span class="item-quantity">x1</span>
+            <span class="item-price">₹350</span>
+          </div>
+          <div class="cart-item">
+            <span class="item-name">Chole Bhature</span>
+            <span class="item-quantity">x2</span>
+            <span class="item-price">₹360</span>
+          </div>
+          <div class="cart-item">
+            <span class="item-name">Masala Dosa</span>
+            <span class="item-quantity">x1</span>
+            <span class="item-price">₹150</span>
+          </div>
+        </div>
+        <div class="cart-total">
+          <strong>Total: ₹860</strong>
+        </div>
+        <div class="cart-actions">
+          <a href="cart.html" class="cart-btn" style="text-decoration: none; display: block; text-align: center;">🛒 View Cart</a>
+          <button id="quickOrder" class="cart-btn">⚡ Emergency Order</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <nav class="bottom-nav">
+    <div class="nav-container">
+      <button class="nav-btn active" data-page="home">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-label">Home</span>
+      </button>
+      <a href="my-orders.html" class="nav-link">
+        <button class="nav-btn" data-page="orders">
+          <span class="nav-icon">🍴</span>
+          <span class="nav-label">Orders</span>
+        </button>
+      </a>
+      <a href="cart.html" class="nav-link">
+        <button class="nav-btn" data-page="cart">
+          <span class="nav-icon">🛒</span>
+          <span class="nav-label">Cart</span>
+        </button>
+      </a>
+      <button class="nav-btn" data-page="profile">
+        <span class="nav-icon">👤</span>
+        <span class="nav-label">Profile</span>
+      </button>
+      <button class="nav-btn" data-page="offers">
+        <span class="nav-icon">💸</span>
+        <span class="nav-label">Offers</span>
+      </button>
+      <button class="nav-btn" data-page="restaurant">
+        <span class="nav-icon">🏩</span>
+        <span class="nav-label">Restaurant</span>
+      </button>
+    </div>
+  </nav>
+
+  
+  <div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-spinner"></div>
+    <p>Loading delicious options...</p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

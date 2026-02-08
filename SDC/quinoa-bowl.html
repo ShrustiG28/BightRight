@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quinoa Power Bowl - Customize Your Order | BiteRight</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="dish-page-perfect.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌾</text></svg>">
+  
+
+</head>
+<body>
+  <button class="back-btn" onclick="window.history.back()">←</button>
+  
+  <div class="container">
+    <div class="dish-header">
+      <img src="https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=600&h=250&fit=crop&crop=center" alt="Quinoa Power Bowl" class="dish-image" loading="lazy" />
+      <h1>🌾 Quinoa Power Bowl</h1>
+      <p>Nutrient-packed superfood bowl with quinoa, fresh vegetables, and your choice of protein</p>
+      <div class="dish-meta">
+        <span class="meta-badge">🌾 Superfood</span>
+        <span class="meta-badge">⏱️ Prep Time: 20 min</span>
+        <span class="meta-badge">👥 Serves: 1-2</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">🌾 Quinoa Base</h2>
+      <div class="ingredients-grid">
+        <div class="ingredient-item">
+          <input type="checkbox" id="tri-color-quinoa" checked>
+          <label for="tri-color-quinoa">Tri-Color Quinoa</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="vegetable-broth" checked>
+          <label for="vegetable-broth">Vegetable Broth</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="lemon-zest" checked>
+          <label for="lemon-zest">Fresh Lemon Zest</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="herbs" checked>
+          <label for="herbs">Fresh Herbs</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">🥑 Power Toppings</h2>
+      <div class="ingredients-grid">
+        <div class="ingredient-item">
+          <input type="checkbox" id="avocado" checked>
+          <label for="avocado">Fresh Avocado</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="roasted-vegetables" checked>
+          <label for="roasted-vegetables">Roasted Vegetables</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="pumpkin-seeds" checked>
+          <label for="pumpkin-seeds">Pumpkin Seeds</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="cherry-tomatoes" checked>
+          <label for="cherry-tomatoes">Cherry Tomatoes</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="cucumber" checked>
+          <label for="cucumber">Fresh Cucumber</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="red-cabbage" checked>
+          <label for="red-cabbage">Purple Cabbage</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="edamame">
+          <label for="edamame">Edamame (+₹25)</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="hemp-seeds">
+          <label for="hemp-seeds">Hemp Seeds (+₹35)</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">🥩 Protein Choice</h2>
+      <div class="protein-options">
+        <div class="protein-option selected" data-protein="grilled-chicken">
+          <div>🐔 Grilled Chicken</div>
+          <small>+₹0</small>
+        </div>
+        <div class="protein-option" data-protein="tofu">
+          <div>🥩 Marinated Tofu</div>
+          <small>-₹20</small>
+        </div>
+        <div class="protein-option" data-protein="salmon">
+          <div>🐟 Grilled Salmon</div>
+          <small>+₹60</small>
+        </div>
+        <div class="protein-option" data-protein="chickpeas">
+          <div>🫘 Spiced Chickpeas</div>
+          <small>-₹30</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">🥗 Dressing</h2>
+      <div class="ingredients-grid">
+        <div class="ingredient-item">
+          <input type="checkbox" id="tahini-dressing" checked>
+          <label for="tahini-dressing">Tahini Lemon Dressing</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="olive-oil" checked>
+          <label for="olive-oil">Extra Virgin Olive Oil</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="balsamic">
+          <label for="balsamic">Balsamic Glaze (+₹15)</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="price-info">
+      <div class="price">₹220 - ₹280</div>
+      <div class="price-note">Price varies based on protein choice and add-ons</div>
+    </div>
+
+    <a href="Customize.html">
+      <button class="customize-btn">🎯 Proceed to Customization</button>
+    </a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      initializePage();
+      setupEventListeners();
+      animateElements();
+    });
+
+    function initializePage() {
+      updatePrice();
+      document.body.style.opacity = '0';
+      setTimeout(() => {
+        document.body.style.transition = 'opacity 0.5s ease';
+        document.body.style.opacity = '1';
+      }, 100);
+    }
+
+    function setupEventListeners() {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', handleIngredientChange);
+      });
+
+      const ingredientItems = document.querySelectorAll('.ingredient-item');
+      ingredientItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+          if (e.target.type !== 'checkbox') {
+            const checkbox = item.querySelector('input[type="checkbox"]');
+            checkbox.checked = !checkbox.checked;
+            handleIngredientChange.call(checkbox);
+          }
+        });
+      });
+
+      // Protein selection
+      const proteinOptions = document.querySelectorAll('.protein-option');
+      proteinOptions.forEach(option => {
+        option.addEventListener('click', function() {
+          proteinOptions.forEach(opt => opt.classList.remove('selected'));
+          this.classList.add('selected');
+          updatePrice();
+        });
+      });
+    }
+
+    function handleIngredientChange() {
+      const item = this.closest('.ingredient-item');
+      
+      if (this.checked) {
+        item.style.background = 'rgba(240, 147, 251, 0.15)';
+        item.style.borderLeft = '4px solid #f093fb';
+      } else {
+        item.style.background = 'rgba(231, 76, 60, 0.1)';
+        item.style.borderLeft = '4px solid #e74c3c';
+      }
+      
+      updatePrice();
+      
+      item.style.transform = 'scale(1.02)';
+      setTimeout(() => {
+        item.style.transform = 'scale(1)';
+      }, 150);
+    }
+
+    function updatePrice() {
+      const basePrice = 220;
+      let totalPrice = basePrice;
+      
+      // Add-ons
+      const edamameCheckbox = document.getElementById('edamame');
+      if (edamameCheckbox && edamameCheckbox.checked) {
+        totalPrice += 25;
+      }
+      
+      const hempSeedsCheckbox = document.getElementById('hemp-seeds');
+      if (hempSeedsCheckbox && hempSeedsCheckbox.checked) {
+        totalPrice += 35;
+      }
+      
+      const balsamicCheckbox = document.getElementById('balsamic');
+      if (balsamicCheckbox && balsamicCheckbox.checked) {
+        totalPrice += 15;
+      }
+      
+      // Protein adjustments
+      const selectedProtein = document.querySelector('.protein-option.selected');
+      if (selectedProtein) {
+        const protein = selectedProtein.dataset.protein;
+        switch(protein) {
+          case 'tofu':
+            totalPrice -= 20;
+            break;
+          case 'salmon':
+            totalPrice += 60;
+            break;
+          case 'chickpeas':
+            totalPrice -= 30;
+            break;
+        }
+      }
+      
+      const allCheckboxes = document.querySelectorAll('input[type="checkbox"]');
+      const uncheckedCount = Array.from(allCheckboxes).filter(cb => !cb.checked).length;
+      const discount = uncheckedCount * 8;
+      
+      totalPrice = Math.max(totalPrice - discount, 160);
+      
+      const priceElement = document.querySelector('.price');
+      if (priceElement) {
+        priceElement.textContent = `₹${totalPrice}`;
+      }
+    }
+
+    function animateElements() {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(30px)';
+        
+        setTimeout(() => {
+          card.style.transition = 'all 0.6s ease';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, index * 200);
+      });
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paneer Butter Masala - Customize Your Order | BiteRight</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="dish-page-perfect.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧀</text></svg>">
+</head>
+<body>
+  <button class="back-btn" onclick="window.history.back()">←</button>
+  
+  <div class="container">
+    <div class="dish-header">
+      <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?w=600&h=250&fit=crop&crop=center" alt="Paneer Butter Masala" class="dish-image" loading="lazy" />
+      <h1>🧀 Paneer Butter Masala</h1>
+      <p>Soft paneer cubes in a rich, creamy tomato sauce with butter and aromatic spices</p>
+      <div class="dish-meta">
+        <span class="meta-badge">🇮🇳 North Indian</span>
+        <span class="meta-badge">⏱️ Prep Time: 25 min</span>
+        <span class="meta-badge">👥 Serves: 2</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">📏 Portion Size</h2>
+      <div class="size-options">
+        <div class="size-option" data-size="small">
+          <div>🍽️ Small</div>
+          <small>Perfect for 1</small>
+        </div>
+        <div class="size-option selected" data-size="regular">
+          <div>🍽️ Regular</div>
+          <small>Serves 2</small>
+        </div>
+        <div class="size-option" data-size="family">
+          <div>🎉 Family Pack</div>
+          <small>Serves 3-4</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">🧀 Paneer</h2>
+      <div class="ingredients-grid">
+        <div class="ingredient-item">
+          <input type="checkbox" id="fresh-paneer" checked>
+          <label for="fresh-paneer">Fresh Paneer</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="malai-paneer">
+          <label for="malai-paneer">Malai Paneer (Premium) (+₹40)</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="grilled-paneer">
+          <label for="grilled-paneer">Grilled Paneer (+₹30)</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="extra-paneer">
+          <label for="extra-paneer">Extra Paneer (+₹50)</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">🍅 Gravy Base</h2>
+      <div class="ingredients-grid">
+        <div class="ingredient-item">
+          <input type="checkbox" id="tomato-puree" checked>
+          <label for="tomato-puree">Tomato Puree</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="onion" checked>
+          <label for="onion">Onion</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="butter" checked>
+          <label for="butter">Butter</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="fresh-cream" checked>
+          <label for="fresh-cream">Fresh Cream</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="cashew-paste" checked>
+          <label for="cashew-paste">Cashew Paste</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="ginger-garlic" checked>
+          <label for="ginger-garlic">Ginger-Garlic Paste</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">🌶️ Spices</h2>
+      <div class="ingredients-grid">
+        <div class="ingredient-item">
+          <input type="checkbox" id="red-chili" checked>
+          <label for="red-chili">Red Chili Powder</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="turmeric" checked>
+          <label for="turmeric">Turmeric</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="garam-masala" checked>
+          <label for="garam-masala">Garam Masala</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="kasuri-methi" checked>
+          <label for="kasuri-methi">Kasuri Methi (Dried Fenugreek)</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="cumin" checked>
+          <label for="cumin">Cumin Seeds</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="coriander-powder" checked>
+          <label for="coriander-powder">Coriander Powder</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">🥗 Sides & Garnishes</h2>
+      <div class="ingredients-grid">
+        <div class="ingredient-item">
+          <input type="checkbox" id="coriander-leaves" checked>
+          <label for="coriander-leaves">Fresh Coriander Leaves</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="green-chili">
+          <label for="green-chili">Green Chilies</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="ginger-julienne">
+          <label for="ginger-julienne">Ginger Julienne</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="naan">
+          <label for="naan">Butter Naan (+₹30)</label>
+        </div>
+        <div class="ingredient-item">
+          <input type="checkbox" id="rice">
+          <label for="rice">Steamed Rice (+₹25)</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">🌶️ Spice Level</h2>
+      <div class="size-options">
+        <div class="size-option" data-spice="mild">
+          <div>🌶️ Mild</div>
+          <small>Subtle heat</small>
+        </div>
+        <div class="size-option selected" data-spice="medium">
+          <div>🌶️🌶️ Medium</div>
+          <small>Balanced spice</small>
+        </div>
+        <div class="size-option" data-spice="hot">
+          <div>🌶️🌶️🌶️ Hot</div>
+          <small>Fiery kick</small>
+        </div>
+      </div>
+    </div>
+
+    <div class="price-info">
+      <div class="price">₹180 - ₹320</div>
+      <div class="price-note">Price varies based on size and add-ons</div>
+    </div>
+
+    <a href="Customize.html">
+      <button class="customize-btn">🎯 Proceed to Customization</button>
+    </a>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      initializePage();
+      setupEventListeners();
+      animateElements();
+    });
+
+    function initializePage() {
+      updatePrice();
+      document.body.style.opacity = '0';
+      setTimeout(() => {
+        document.body.style.transition = 'opacity 0.5s ease';
+        document.body.style.opacity = '1';
+      }, 100);
+    }
+
+    function setupEventListeners() {
+      const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+      checkboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', handleIngredientChange);
+      });
+
+      const ingredientItems = document.querySelectorAll('.ingredient-item');
+      ingredientItems.forEach(item => {
+        item.addEventListener('click', function(e) {
+          if (e.target.type !== 'checkbox') {
+            const checkbox = item.querySelector('input[type="checkbox"]');
+            checkbox.checked = !checkbox.checked;
+            handleIngredientChange.call(checkbox);
+          }
+        });
+      });
+
+      // Size selection
+      const sizeOptions = document.querySelectorAll('.size-option');
+      sizeOptions.forEach(option => {
+        option.addEventListener('click', function() {
+          const group = this.closest('.size-options');
+          group.querySelectorAll('.size-option').forEach(opt => opt.classList.remove('selected'));
+          this.classList.add('selected');
+          updatePrice();
+        });
+      });
+    }
+
+    function handleIngredientChange() {
+      const item = this.closest('.ingredient-item');
+      
+      if (this.checked) {
+        item.style.background = 'rgba(254, 202, 87, 0.15)';
+        item.style.borderLeft = '4px solid #feca57';
+      } else {
+        item.style.background = 'rgba(231, 76, 60, 0.1)';
+        item.style.borderLeft = '4px solid #e74c3c';
+      }
+      
+      updatePrice();
+      
+      item.style.transform = 'scale(1.02)';
+      setTimeout(() => {
+        item.style.transform = 'scale(1)';
+      }, 150);
+    }
+
+    function updatePrice() {
+      // Basic price calculation based on size and add-ons
+      let basePrice = 180;
+      const selectedSize = document.querySelector('.card:first-of-type .size-option.selected').getAttribute('data-size');
+      
+      if (selectedSize === 'regular') {
+        basePrice = 220;
+      } else if (selectedSize === 'family') {
+        basePrice = 320;
+      }
+      
+      // Premium add-ons
+      const premiumAddOns = document.querySelectorAll('input[type="checkbox"]:checked');
+      let premium = 0;
+      premiumAddOns.forEach(addon => {
+        if (addon.id === 'malai-paneer') premium += 40;
+        if (addon.id === 'grilled-paneer') premium += 30;
+        if (addon.id === 'extra-paneer') premium += 50;
+        if (addon.id === 'naan') premium += 30;
+        if (addon.id === 'rice') premium += 25;
+      });
+      
+      const finalPrice = basePrice;
+      const maxPrice = basePrice + premium;
+      
+      document.querySelector('.price').textContent = `₹${finalPrice} - ₹${maxPrice}`;
+    }
+
+    function animateElements() {
+      const cards = document.querySelectorAll('.card');
+      cards.forEach((card, index) => {
+        card.style.opacity = '0';
+        card.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+          card.style.transition = 'all 0.5s ease';
+          card.style.opacity = '1';
+          card.style.transform = 'translateY(0)';
+        }, 100 + (index * 100));
+      });
+    }
+  </script>
+</body>
+</html>

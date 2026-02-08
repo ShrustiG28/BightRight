@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Complete Payment | BiteRight</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="perfect-alignment.css" />
+  <link rel="stylesheet" href="design-system.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍽️</text></svg>">
+  <style>
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      min-height: 100vh;
+      padding-bottom: 70px; /* Space for bottom nav */
+    }
+    
+    .header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 1.5rem;
+      text-align: center;
+      border-radius: 0 0 var(--radius-xl) var(--radius-xl);
+      box-shadow: var(--shadow-md);
+      margin-bottom: 2rem;
+    }
+    
+    .header h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+    
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all var(--transition-base);
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .card-header {
+      padding: 1.5rem;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+    }
+    
+    .card-body {
+      padding: 1.5rem;
+    }
+    
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+    
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+      color: #2c3e50;
+    }
+    
+    .form-control {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 2px solid rgba(102, 126, 234, 0.2);
+      border-radius: var(--radius-lg);
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      transition: all var(--transition-base);
+      background: rgba(255, 255, 255, 0.8);
+    }
+    
+    .form-control:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      background: rgba(255, 255, 255, 1);
+    }
+    
+    .btn {
+      display: inline-block;
+      width: 100%;
+      padding: 1rem 1.5rem;
+      background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+      color: white;
+      border: none;
+      border-radius: var(--radius-lg);
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all var(--transition-base);
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+    }
+    
+    .payment-method {
+      margin-bottom: 1.5rem;
+    }
+    
+    .method-header {
+      display: flex;
+      align-items: center;
+      padding: 1rem;
+      background: rgba(102, 126, 234, 0.05);
+      border-radius: var(--radius-lg);
+      cursor: pointer;
+      transition: all var(--transition-base);
+    }
+    
+    .method-header:hover {
+      background: rgba(102, 126, 234, 0.1);
+    }
+    
+    .method-title {
+      margin-left: 0.8rem;
+      font-weight: 600;
+      color: #2c3e50;
+    }
+    
+    .method-content {
+      padding: 1.5rem;
+      background: rgba(255, 255, 255, 0.5);
+      border-radius: var(--radius-lg);
+      margin-top: 1rem;
+      display: none;
+    }
+    
+    .method-content.active {
+      display: block;
+    }
+    
+    .upi-apps {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+      margin-top: 1rem;
+    }
+    
+    .upi-app {
+      flex: 1;
+      min-width: 100px;
+      padding: 0.8rem;
+      background: white;
+      border-radius: var(--radius-lg);
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      cursor: pointer;
+      transition: all var(--transition-base);
+      font-weight: 500;
+    }
+    
+    .upi-app:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .success-message {
+      text-align: center;
+      padding: 2rem;
+    }
+    
+    .success-icon {
+      font-size: 4rem;
+      color: #27ae60;
+      margin-bottom: 1.5rem;
+    }
+    
+    .success-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #2c3e50;
+    }
+    
+    .success-details {
+      margin-top: 1.5rem;
+      text-align: left;
+      background: rgba(39, 174, 96, 0.05);
+      padding: 1.5rem;
+      border-radius: var(--radius-lg);
+    }
+    
+    .success-details p {
+      margin-bottom: 0.5rem;
+    }
+    
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      padding: 0.8rem;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+    
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .hidden {
+      display: none;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 0 1rem;
+      }
+      
+      .header h1 {
+        font-size: 1.5rem;
+      }
+      
+      .upi-apps {
+        flex-direction: column;
+      }
+      
+      .upi-app {
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="back-btn" onclick="window.history.back()">←</button>
+  
+  <div class="header">
+    <h1>BiteRight – Eat what you want, avoid what you don't! 🍽️</h1>
+    <p>Complete your order and enjoy your meal</p>
+  </div>
+
+  <div class="container">
+    <!-- Order Confirmation Section -->
+    <div class="card" id="orderConfirmation">
+      <div class="card-header">
+        <h2>🧾 Confirm Your Order</h2>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <p><strong>Dish:</strong> <span id="dishName"></span></p>
+          <p><strong>Price:</strong> ₹<span id="dishPrice"></span></p>
+        </div>
+        <div class="form-group">
+          <label for="instructions" class="form-label">📝 Special Instructions</label>
+          <textarea id="instructions" class="form-control" placeholder="E.g. No garlic, less oil..."></textarea>
+        </div>
+        <button class="btn" onclick="showLocationPrompt()">✅ Confirm Order</button>
+      </div>
+    </div>
+
+    <!-- Location Section -->
+    <div class="card hidden" id="locationSection">
+      <div class="card-header">
+        <h2>📍 Enter Your Delivery Location</h2>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <label for="address" class="form-label">Street Address</label>
+          <input type="text" id="address" class="form-control" placeholder="123 Main St">
+        </div>
+        <div class="form-group">
+          <label for="city" class="form-label">City</label>
+          <input type="text" id="city" class="form-control" placeholder="Mumbai">
+        </div>
+        <div class="form-group">
+          <label for="state" class="form-label">State</label>
+          <input type="text" id="state" class="form-control" placeholder="Maharashtra">
+        </div>
+        <div class="form-group">
+          <label for="zip" class="form-label">ZIP Code</label>
+          <input type="text" id="zip" class="form-control" placeholder="400001">
+        </div>
+        <button class="btn" onclick="confirmLocation()">Proceed to Payment</button>
+      </div>
+    </div>
+
+    <!-- Payment Section -->
+    <div class="card hidden" id="paymentSection">
+      <div class="card-header">
+        <h2>💳 Complete Payment</h2>
+        <p>Amount: ₹<span id="paymentAmount"></span></p>
+      </div>
+      <div class="card-body">
+        <!-- UPI Payment Method -->
+        <div class="payment-method">
+          <div class="method-header" onclick="toggleMethod('upi')">
+            <input type="radio" name="paymentMethod" id="upiRadio" checked>
+            <span class="method-title">UPI Payment</span>
+          </div>
+          <div class="method-content active" id="upiContent">
+            <div class="form-group">
+              <label for="upiId" class="form-label">Enter UPI ID</label>
+              <input type="text" id="upiId" class="form-control" placeholder="yourname@upi">
+            </div>
+            <p style="text-align: center; margin: 1rem 0;">OR</p>
+            <div class="upi-apps">
+              <div class="upi-app" onclick="selectUPIApp('googlepay')">Google Pay</div>
+              <div class="upi-app" onclick="selectUPIApp('phonepe')">PhonePe</div>
+              <div class="upi-app" onclick="selectUPIApp('paytm')">Paytm</div>
+              <div class="upi-app" onclick="selectUPIApp('bhim')">BHIM</div>
+            </div>
+            <button class="btn" style="margin-top: 1.5rem;" onclick="processPayment('upi')">Pay via UPI</button>
+          </div>
+        </div>
+        
+        <!-- Card Payment Method -->
+        <div class="payment-method">
+          <div class="method-header" onclick="toggleMethod('card')">
+            <input type="radio" name="paymentMethod" id="cardRadio">
+            <span class="method-title">Credit/Debit Card</span>
+          </div>
+          <div class="method-content" id="cardContent">
+            <div class="form-group">
+              <label for="cardNumber" class="form-label">Card Number</label>
+              <input type="text" id="cardNumber" class="form-control" placeholder="1234 5678 9012 3456">
+            </div>
+            <div style="display: flex; gap: 15px;">
+              <div class="form-group" style="flex: 1;">
+                <label for="cardExpiry" class="form-label">Expiry Date</label>
+                <input type="text" id="cardExpiry" class="form-control" placeholder="MM/YY">
+              </div>
+              <div class="form-group" style="flex: 1;">
+                <label for="cardCvv" class="form-label">CVV</label>
+                <input type="text" id="cardCvv" class="form-control" placeholder="123">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="cardName" class="form-label">Name on Card</label>
+              <input type="text" id="cardName" class="form-control" placeholder="John Doe">
+            </div>
+            <button class="btn" onclick="processPayment('card')">Pay with Card</button>
+          </div>
+        </div>
+        
+        <!-- Cash on Delivery -->
+        <div class="payment-method">
+          <div class="method-header" onclick="toggleMethod('cod')">
+            <input type="radio" name="paymentMethod" id="codRadio">
+            <span class="method-title">Cash on Delivery</span>
+          </div>
+          <div class="method-content" id="codContent">
+            <p style="margin-bottom: 1.5rem; color: #7f8c8d;">
+              Pay with cash when your order arrives. An additional ₹20 will be charged for this service.
+            </p>
+            <button class="btn" onclick="processPayment('cod')">Place Order (Cash on Delivery)</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Success Message -->
+    <div class="card hidden" id="successMessage">
+      <div class="success-message">
+        <div class="success-icon">✓</div>
+        <h2 class="success-title">Payment Successful!</h2>
+        <p>Thank you for your order.</p>
+        <div class="success-details">
+          <p><strong>Order ID:</strong> <span id="orderId"></span></p>
+          <p><strong>Amount Paid:</strong> ₹<span id="confirmedAmount"></span></p>
+          <p><strong>Dish:</strong> <span id="confirmedDish"></span></p>
+          <p><strong>Delivery Address:</strong> <span id="deliveryAddress"></span></p>
+        </div>
+        <button class="btn" style="margin-top: 1.5rem;" onclick="goToMyOrders()">Go to My Orders</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Navigation -->
+  <nav class="bottom-nav">
+    <div class="nav-container">
+      <a href="index.html">
+        <button class="nav-btn" data-page="home">
+          <span class="nav-icon">🏠</span>
+          <span class="nav-label">Home</span>
+        </button>
+      </a>
+      <a href="my-orders.html" class="nav-link">
+        <button class="nav-btn" data-page="orders">
+          <span class="nav-icon">🍴</span>
+          <span class="nav-label">Orders</span>
+        </button>
+      </a>
+      <button class="nav-btn active" data-page="payment">
+        <span class="nav-icon">💳</span>
+        <span class="nav-label">Payment</span>
+      </button>
+      <button class="nav-btn" data-page="offers">
+        <span class="nav-icon">💸</span>
+        <span class="nav-label">Offers</span>
+      </button>
+      <button class="nav-btn" data-page="profile">
+        <span class="nav-icon">👤</span>
+        <span class="nav-label">Profile</span>
+      </button>
+    </div>
+  </nav>
+
+  <script>
+    let orderDetails = {};
+    // Get cart items from localStorage
+    const cartItems = JSON.parse(localStorage.getItem('cartItems')) || [];
+
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+      // Check if we have items in cart
+      if (cartItems.length > 0) {
+        // Calculate total price
+        let totalPrice = 0;
+        let dishNames = [];
+        
+        cartItems.forEach(item => {
+          totalPrice += item.price * item.quantity;
+          dishNames.push(`${item.name} x${item.quantity}`);
+        });
+        
+        // Set dish details
+        document.getElementById("dishName").textContent = dishNames.join(", ");
+        document.getElementById("dishPrice").textContent = totalPrice;
+        document.getElementById("paymentAmount").textContent = totalPrice;
+        
+        // Store order details
+        orderDetails = {
+          dish: dishNames.join(", "),
+          price: totalPrice,
+          instructions: "",
+          address: "",
+          paymentMethod: "upi"
+        };
+      } else {
+        // Fallback to URL parameters if cart is empty
+        const params = new URLSearchParams(window.location.search);
+        const dish = params.get("dish") || "Custom Dish";
+        const price = params.get("price") || "200";
+        
+        // Set dish details
+        document.getElementById("dishName").textContent = dish;
+        document.getElementById("dishPrice").textContent = price;
+        document.getElementById("paymentAmount").textContent = price;
+        
+        // Store order details
+        orderDetails = {
+          dish: dish,
+          price: price,
+          instructions: "",
+          address: "",
+          paymentMethod: "upi"
+        };
+      }
+    });
+
+    function showLocationPrompt() {
+      // Get special instructions
+      const instructions = document.getElementById("instructions").value;
+      orderDetails.instructions = instructions;
+      
+      // Hide order confirmation, show location form
+      document.getElementById("orderConfirmation").classList.add("hidden");
+      document.getElementById("locationSection").classList.remove("hidden");
+    }
+
+    function confirmLocation() {
+      // Get address details
+      const address = document.getElementById("address").value;
+      const city = document.getElementById("city").value;
+      const state = document.getElementById("state").value;
+      const zip = document.getElementById("zip").value;
+      
+      // Validate address
+      if (!address || !city || !state || !zip) {
+        alert("Please fill in all address fields");
+        return;
+      }
+      
+      // Store address
+      orderDetails.address = `${address}, ${city}, ${state} - ${zip}`;
+      
+      // Hide location form, show payment section
+      document.getElementById("locationSection").classList.add("hidden");
+      document.getElementById("paymentSection").classList.remove("hidden");
+    }
+
+    function toggleMethod(method) {
+      // Hide all method contents
+      document.querySelectorAll('.method-content').forEach(content => {
+        content.classList.remove('active');
+      });
+      
+      // Show selected method content
+      document.getElementById(`${method}Content`).classList.add('active');
+      
+      // Update radio buttons
+      document.querySelectorAll('input[name="paymentMethod"]').forEach(radio => {
+        radio.checked = false;
+      });
+      document.getElementById(`${method}Radio`).checked = true;
+      
+      // Update payment method
+      orderDetails.paymentMethod = method;
+    }
+
+    function selectUPIApp(app) {
+      alert(`${app} selected. Continuing with payment...`);
+    }
+
+    function processPayment(method) {
+      // Show loading (simulated payment processing)
+      alert("Processing payment...");
+      
+      // Generate random order ID
+      const orderId = "BR" + Math.floor(Math.random() * 1000000);
+      
+      // Update success message
+      document.getElementById("orderId").textContent = orderId;
+      document.getElementById("confirmedAmount").textContent = orderDetails.price;
+      document.getElementById("confirmedDish").textContent = orderDetails.dish;
+      document.getElementById("deliveryAddress").textContent = orderDetails.address;
+      
+      // Save order to localStorage
+      saveOrder(orderId);
+      
+      // Clear cart after successful order
+      localStorage.removeItem('cartItems');
+      
+      // Hide payment section, show success message
+      setTimeout(() => {
+        document.getElementById("paymentSection").classList.add("hidden");
+        document.getElementById("successMessage").classList.remove("hidden");
+      }, 1500);
+    }
+    
+    function saveOrder(orderId) {
+      const orders = JSON.parse(localStorage.getItem('orders')) || [];
+      
+      const newOrder = {
+        orderId: orderId,
+        dish: orderDetails.dish,
+        price: orderDetails.price,
+        location: orderDetails.address,
+        instructions: orderDetails.instructions,
+        date: new Date().toLocaleDateString(),
+        status: "In Progress"
+      };
+      
+      orders.push(newOrder);
+      localStorage.setItem('orders', JSON.stringify(orders));
+    }
+
+    function goToMyOrders() {
+      window.location.href = "my-orders.html";
+    }
+  </script>
+</body>
+</html>

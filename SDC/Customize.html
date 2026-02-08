@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Customize Your Meal | BiteRight</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap">
+  <link rel="stylesheet" href="perfect-alignment.css" />
+  <link rel="stylesheet" href="design-system.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍽️</text></svg>">
+  
+  <style>
+    body {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 15s ease infinite;
+      min-height: 100vh;
+      padding-bottom: 70px; /* Space for bottom nav */
+    }
+    
+    .container {
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 1rem;
+      padding-top: 4rem;
+    }
+    
+    .page-header {
+      text-align: center;
+      margin-bottom: 2rem;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      padding: 2rem;
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    .page-header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 0.5rem;
+    }
+    
+    .card {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-lg);
+      padding: 2rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all var(--transition-base);
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-xl);
+    }
+    
+    .section-title {
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #2c3e50;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .customization-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    
+    .form-group label {
+      font-weight: 500;
+      color: #2c3e50;
+      font-size: 1rem;
+    }
+    
+    .form-group textarea {
+      width: 100%;
+      min-height: 120px;
+      padding: 1rem;
+      border: 2px solid rgba(102, 126, 234, 0.2);
+      border-radius: var(--radius-lg);
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      resize: vertical;
+      transition: all var(--transition-base);
+      background: rgba(255, 255, 255, 0.8);
+    }
+    
+    .form-group textarea:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      background: rgba(255, 255, 255, 1);
+    }
+    
+    .form-group input[type="text"], 
+    .form-group input[type="tel"] {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid rgba(102, 126, 234, 0.2);
+      border-radius: var(--radius-lg);
+      font-family: 'Poppins', sans-serif;
+      font-size: 1rem;
+      transition: all var(--transition-base);
+      background: rgba(255, 255, 255, 0.8);
+    }
+    
+    .form-group input:focus {
+      outline: none;
+      border-color: #667eea;
+      box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+      background: rgba(255, 255, 255, 1);
+    }
+    
+    .spice-level {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .spice-option {
+      flex: 1;
+      min-width: 100px;
+      padding: 0.8rem;
+      border: 2px solid rgba(102, 126, 234, 0.3);
+      border-radius: var(--radius-lg);
+      text-align: center;
+      cursor: pointer;
+      transition: all var(--transition-base);
+      background: rgba(255, 255, 255, 0.5);
+      font-weight: 500;
+    }
+    
+    .spice-option.selected {
+      border-color: #667eea;
+      background: rgba(102, 126, 234, 0.1);
+      color: #667eea;
+    }
+    
+    .spice-option:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.2);
+    }
+    
+    .submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+      border: none;
+      padding: 1rem 2rem;
+      border-radius: var(--radius-lg);
+      color: white;
+      font-weight: 600;
+      font-size: 1.1rem;
+      cursor: pointer;
+      transition: all var(--transition-base);
+      box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-top: 1rem;
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(102, 126, 234, 0.5);
+    }
+    
+    .order-summary {
+      background: rgba(39, 174, 96, 0.1);
+      border-radius: var(--radius-lg);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    
+    .order-summary h3 {
+      color: #27ae60;
+      margin-bottom: 1rem;
+      font-size: 1.2rem;
+    }
+    
+    .order-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.5rem 0;
+      border-bottom: 1px solid rgba(39, 174, 96, 0.2);
+    }
+    
+    .order-item:last-child {
+      border-bottom: none;
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #27ae60;
+    }
+    
+    .back-btn {
+      position: fixed;
+      top: 20px;
+      left: 20px;
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      padding: 0.8rem;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.2rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      z-index: 1000;
+    }
+    
+    .back-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 1rem;
+        padding-top: 4rem;
+      }
+      
+      .page-header h1 {
+        font-size: 1.5rem;
+      }
+      
+      .spice-level {
+        flex-direction: column;
+      }
+      
+      .spice-option {
+        min-width: auto;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button class="back-btn" onclick="window.history.back()">←</button>
+  
+  <div class="container">
+    <div class="page-header">
+      <h1 id="dishTitle">🎯 Customize Your Meal</h1>
+      <p>Make it exactly how you like it!</p>
+    </div>
+
+    <div class="card" id="orderSummary" style="display: none;">
+      <div class="order-summary">
+        <h3>📋 Order Summary</h3>
+        <div class="order-item">
+          <span>Dish:</span>
+          <span id="summaryDish">-</span>
+        </div>
+        <div class="order-item">
+          <span>Selected Ingredients:</span>
+          <span id="summaryIngredients">-</span>
+        </div>
+        <div class="order-item">
+          <span>Total Price:</span>
+          <span id="summaryPrice">₹0</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title">🍽️ Special Instructions</h2>
+      <form class="customization-form">
+        <div class="form-group">
+          <label for="customInput">Tell us how you'd like to customize your dish:</label>
+          <textarea id="customInput" placeholder="E.g., no onions, extra cheese, less oil, make it spicy, add extra sauce..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label>🌶️ Spice Level:</label>
+          <div class="spice-level">
+            <div class="spice-option" data-spice="mild" onclick="selectSpiceLevel(this)">😊 Mild</div>
+            <div class="spice-option selected" data-spice="medium" onclick="selectSpiceLevel(this)">🌶️ Medium</div>
+            <div class="spice-option" data-spice="hot" onclick="selectSpiceLevel(this)">🔥 Hot</div>
+            <div class="spice-option" data-spice="extra-hot" onclick="selectSpiceLevel(this)">🌋 Extra Hot</div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="customerName">👤 Your Name:</label>
+          <input type="text" id="customerName" placeholder="Enter your name" required>
+        </div>
+
+        <div class="form-group">
+          <label for="customerPhone">📞 Phone Number:</label>
+          <input type="tel" id="customerPhone" placeholder="Enter your phone number" required>
+        </div>
+
+        <button type="button" class="submit-btn" onclick="submitCustomization()">
+          🎯 Finalize Customization & Place Order
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Footer Navigation -->
+  <nav class="bottom-nav">
+    <div class="nav-container">
+      <a href="index.html">
+        <button class="nav-btn" data-page="home">
+          <span class="nav-icon">🏠</span>
+          <span class="nav-label">Home</span>
+        </button>
+      </a>
+      <a href="my-orders.html" class="nav-link">
+        <button class="nav-btn" data-page="orders">
+          <span class="nav-icon">🍴</span>
+          <span class="nav-label">Orders</span>
+        </button>
+      </a>
+      <button class="nav-btn active" data-page="customize">
+        <span class="nav-icon">🎯</span>
+        <span class="nav-label">Customize</span>
+      </button>
+      <button class="nav-btn" data-page="offers">
+        <span class="nav-icon">💸</span>
+        <span class="nav-label">Offers</span>
+      </button>
+      <button class="nav-btn" data-page="profile">
+        <span class="nav-icon">👤</span>
+        <span class="nav-label">Profile</span>
+      </button>
+    </div>
+  </nav>
+
+  <script>
+    // Get dish and price from URL parameters
+    const params = new URLSearchParams(window.location.search);
+    const dish = params.get("dish") || "Your Dish";
+    const price = params.get("price") || "500";
+
+    // Update dish title
+    document.getElementById("dishTitle").textContent = `Customize: ${dish}`;
+
+    function selectSpiceLevel(element) {
+      // Remove selected class from all options
+      document.querySelectorAll('.spice-option').forEach(option => {
+        option.classList.remove('selected');
+      });
+      
+      // Add selected class to clicked option
+      element.classList.add('selected');
+    }
+
+    function submitCustomization() {
+      const input = document.getElementById("customInput").value;
+      const name = document.getElementById("customerName").value;
+      const phone = document.getElementById("customerPhone").value;
+      
+      if (!input.trim() || !name.trim() || !phone.trim()) {
+        alert("Please fill in all fields");
+        return;
+      }
+      
+      // Get selected spice level
+      const selectedSpice = document.querySelector('.spice-option.selected').dataset.spice;
+      
+      // Store customization details
+      const customization = {
+        instructions: input,
+        spiceLevel: selectedSpice,
+        name: name,
+        phone: phone
+      };
+      
+      localStorage.setItem("customization", JSON.stringify(customization));
+      
+      // Navigate to place order page
+      window.location.href = `place-order.html?dish=${encodeURIComponent(dish)}&price=${encodeURIComponent(price)}`;
+    }
+  </script>
+</body>
+</html>
