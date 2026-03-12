@@ -4,7 +4,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import MenuItem, Restaurant
-from .nlp_service import detect_allergy_risk
+from .recommendation_service import generate_recommendations
 from .serializers import MenuItemSerializer, RestaurantSerializer
 from users.models import UserProfile
 
@@ -171,6 +171,33 @@ class SearchMenuView(APIView):
             {
                 "status": "success",
                 "results": results,
+            },
+            status=status.HTTP_200_OK,
+        )
+
+
+class RecommendationView(APIView):
+    def get(self, request, user_id, restaurant_id):
+        mood = request.GET.get("mood")
+        time_of_day = request.query_params.get("time")
+        try:
+            user = UserProfile.objects.get(id=user_id)
+        except UserProfile.DoesNotExist:
+            return Response(
+                {
+                    "status": "error",
+                    "message": "User not found",
+                },
+                status=status.HTTP_404_NOT_FOUND,
+            )
+
+        menu_items = MenuItem.objects.filter(restaurant_id=restaurant_id)
+        recommended = generate_recommendations(user, menu_items, mood, time_of_day)
+
+        return Response(
+            {
+                "status": "success",
+                "recommended_items": recommended,
             },
             status=status.HTTP_200_OK,
         )
