@@ -1,10 +1,11 @@
+from django.db.models import Q
 from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from .models import MenuItem, Restaurant
+from .nlp_service import detect_allergy_risk
 from .serializers import MenuItemSerializer, RestaurantSerializer
-from .utils import check_allergy_risk
 from users.models import UserProfile
 
 
@@ -78,7 +79,7 @@ class AllergyCheckView(APIView):
 
         user_allergies = [item.strip() for item in user.allergies.split(",") if item.strip()]
         ingredients = [item.strip() for item in menu_item.ingredients.split(",") if item.strip()]
-        has_risk = check_allergy_risk(user_allergies, ingredients)
+        has_risk = detect_allergy_risk(user_allergies, ingredients)
 
         if has_risk:
             return Response(
@@ -94,6 +95,82 @@ class AllergyCheckView(APIView):
             {
                 "status": "success",
                 "allergy_risk": False,
+            },
+            status=status.HTTP_200_OK,
+        )
+
+
+class SafeMenuView(APIView):
+    def get(self, request, user_id, restaurant_id):
+        try:
+            user = UserProfile.objects.get(id=user_id)
+        except UserProfile.DoesNotExist:
+            return Response(
+                {
+                    "status": "error",
+                    "message": "User not found",
+                },
+                status=status.HTTP_404_NOT_FOUND,
+            )
+
+        menu_items = MenuItem.objects.filter(restaurant_id=restaurant_id)
+        user_allergies = [item.strip() for item in user.allergies.split(",") if item.strip()]
+
+        safe_menu_items = []
+        for menu_item in menu_items:
+            ingredients = [item.strip() for item in menu_item.ingredients.split(",") if item.strip()]
+            has_risk = detect_allergy_risk(user_allergies, ingredients)
+            if not has_risk:
+                safe_menu_items.append(
+                    {
+                        "id": menu_item.id,
+                        "name": menu_item.name,
+                        "price": menu_item.price,
+                        "diet_tags": menu_item.diet_tags,
+                        "ingredients": menu_item.ingredients,
+                    }
+                )
+
+        return Response(
+            {
+                "status": "success",
+                "safe_menu_items": safe_menu_items,
+            },
+            status=status.HTTP_200_OK,
+        )
+
+
+class SearchMenuView(APIView):
+    def get(self, request, *args, **kwargs):
+        query = request.GET.get("q")
+        if not query:
+            return Response(
+                {
+                    "status": "error",
+                    "message": "Search query is required",
+                },
+                status=status.HTTP_400_BAD_REQUEST,
+            )
+
+        menu_items = MenuItem.objects.filter(
+            Q(name__icontains=query) | Q(ingredients__icontains=query)
+        )
+
+        results = [
+            {
+                "id": menu_item.id,
+                "name": menu_item.name,
+                "price": menu_item.price,
+                "diet_tags": menu_item.diet_tags,
+                "ingredients": menu_item.ingredients,
+            }
+            for menu_item in menu_items
+        ]
+
+        return Response(
+            {
+                "status": "success",
+                "results": results,
             },
             status=status.HTTP_200_OK,
         )

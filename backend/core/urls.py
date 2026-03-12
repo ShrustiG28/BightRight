@@ -16,10 +16,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import include, path
+from rest_framework.schemas import get_schema_view
+from .views import health_check
+
+schema_view = get_schema_view(title='API Docs')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('health/', health_check, name='health-check'),
     path('api/', include('users.urls')),
+    path('api/docs/', schema_view, name='api-docs'),
     path('api/', include('restaurants.urls')),
     path('api/', include('orders.urls')),
 ]
