@@ -1,7 +1,11 @@
-from rest_framework import generics
+from rest_framework import generics, status
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from .models import MenuItem, Restaurant
 from .serializers import MenuItemSerializer, RestaurantSerializer
+from .utils import check_allergy_risk
+from users.models import UserProfile
 
 
 class StandardizedResponseMixin:
@@ -45,3 +49,51 @@ class MenuItemListView(StandardizedResponseMixin, generics.ListAPIView):
             "data": response.data,
         }
         return response
+
+
+class AllergyCheckView(APIView):
+    def post(self, request, *args, **kwargs):
+        user_id = request.data.get("user_id")
+        menu_item_id = request.data.get("menu_item_id")
+
+        try:
+            user = UserProfile.objects.get(id=user_id)
+            menu_item = MenuItem.objects.get(id=menu_item_id)
+        except UserProfile.DoesNotExist:
+            return Response(
+                {
+                    "status": "error",
+                    "message": "User not found",
+                },
+                status=status.HTTP_404_NOT_FOUND,
+            )
+        except MenuItem.DoesNotExist:
+            return Response(
+                {
+                    "status": "error",
+                    "message": "Menu item not found",
+                },
+                status=status.HTTP_404_NOT_FOUND,
+            )
+
+        user_allergies = [item.strip() for item in user.allergies.split(",") if item.strip()]
+        ingredients = [item.strip() for item in menu_item.ingredients.split(",") if item.strip()]
+        has_risk = check_allergy_risk(user_allergies, ingredients)
+
+        if has_risk:
+            return Response(
+                {
+                    "status": "success",
+                    "allergy_risk": True,
+                    "message": "This dish may contain ingredients you are allergic to",
+                },
+                status=status.HTTP_200_OK,
+            )
+
+        return Response(
+            {
+                "status": "success",
+                "allergy_risk": False,
+            },
+            status=status.HTTP_200_OK,
+        )
